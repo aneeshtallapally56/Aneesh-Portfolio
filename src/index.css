@@ -19,7 +19,11 @@ body{
     cursor: none; 
   }
 
-
+  @media (max-width: 768px) {
+    * {
+      cursor: none !important;
+    }
+  }
   .pointer{
     cursor: pointer;
   }
