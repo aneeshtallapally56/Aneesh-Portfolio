@@ -46,7 +46,7 @@ function App() {
       <Loader loading={loading} setLoading={setLoading} />
       <BrowserRouter>
         <PurpleNav activeTab={activeTab} setActiveTab={setActiveTab} />
-        <ReactLenis root options={{ duration: 0.8, smooth: true }}>
+        <ReactLenis root options={{ duration: 1.4, smooth: true }}>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home activeTab={activeTab} setActiveTab={setActiveTab} loading={loading} />} />
