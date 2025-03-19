@@ -10,8 +10,10 @@ function Loader({ loading, setLoading }) {
       const interval = setInterval(() => {
         counter += 1;
         setCount(counter);
-        if (counter === 100) clearInterval(interval);
-      }, 25); 
+        if (counter === 100) {
+          clearInterval(interval);
+        }
+      }, 25);
       return () => clearInterval(interval);
     }
   }, [loading]);
@@ -22,7 +24,6 @@ function Loader({ loading, setLoading }) {
     }, 2500);
     return () => clearTimeout(timer);
   }, [setLoading]);
-
 
   const text = "Hi, I am Aneesh";
   const containerVariants = {
@@ -35,19 +36,15 @@ function Loader({ loading, setLoading }) {
   };
 
   return (
-    <AnimatePresence mode="out">
+    <AnimatePresence mode="wait">
       {loading && (
         <motion.div
-          className="h-full w-full fixed top-0 left-0 z-[9999]   bg-[#3B0664] flex flex-col items-center justify-center"
-          initial={{ y: 0 }}
-          animate={{ y: 0 }}
-          exit={{ y: "-100%", borderRadius: "100%" }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          
+          className="h-full w-full fixed top-0 left-0 z-[9999] bg-[#3B0664] flex flex-col items-center justify-center"
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: "-100vh", transition: { duration: 0.5, ease: "easeInOut" } }}
+          style={{ willChange: "transform, opacity" }} 
         >
-         
-
-
           <motion.h1
             className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white flex"
             variants={containerVariants}
@@ -55,11 +52,14 @@ function Loader({ loading, setLoading }) {
             animate="show"
           >
             {text.split("").map((char, index) => (
-              <motion.span key={index} variants={letterVariants} className={char === " " ? "mr-2" : ""}>
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className={char === " " ? "mr-2" : ""}
+              >
                 {char}
               </motion.span>
             ))}
-
             <motion.span
               className="ml-1 text-white"
               initial={{ opacity: 1 }}
@@ -70,12 +70,12 @@ function Loader({ loading, setLoading }) {
             </motion.span>
           </motion.h1>
 
-           <motion.div
-            className=" absolute text-4xl md:text-6xl lg:text-7xl font-medium bottom-20 glow right-10 text-zinc-300 opacity-50 font-[satoshi]  mb-4"
+          <motion.div
+            className="absolute text-4xl md:text-6xl lg:text-7xl font-medium bottom-20 right-10 text-zinc-300 opacity-50 font-[satoshi] mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.3 }} 
           >
             {count}%
           </motion.div>
