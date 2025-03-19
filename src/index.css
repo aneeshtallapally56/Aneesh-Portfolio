@@ -18,12 +18,15 @@ body{
 * {
     cursor: none; 
   }
-
   @media (max-width: 768px) {
     * {
-      cursor: none !important;
+      cursor: auto !important; 
+    }
+    .pointer {
+      cursor: auto !important; 
     }
   }
+
   .pointer{
     cursor: pointer;
   }

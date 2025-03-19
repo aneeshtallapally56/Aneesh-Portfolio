@@ -5,7 +5,8 @@ import pointer from "../assets/purple_pointer.webp";
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
-
+  
+  
   useEffect(() => {
     const mouseMove = (e) => {
       setPosition({ x: e.clientX-12, y: e.clientY-12 });

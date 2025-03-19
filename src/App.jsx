@@ -26,11 +26,23 @@ function ScrollToTop() {
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [activeTab, setActiveTab] = useState("Home");
+  useEffect(() => {
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isTouchDevice || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <div className="bg-zinc-950 w-full px-3 py-2">
-      <CustomCursor />
+     {!isMobile && <CustomCursor />}
       <Loader loading={loading} setLoading={setLoading} />
       <BrowserRouter>
         <PurpleNav activeTab={activeTab} setActiveTab={setActiveTab} />
