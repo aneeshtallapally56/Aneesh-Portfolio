@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Gravitas+One&family=Quintessential&display=swap');
+@import "tailwindcss";
+
+
+
+body{
+    font-family: 'Satoshi', sans-serif;
+                                                
+}
+.glow {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic;
+   
+}
+
+* {
+    cursor: none; 
+  }
+
+
+  .pointer{
+    cursor: pointer;
+  }
